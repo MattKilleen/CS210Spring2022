@@ -12,7 +12,7 @@ def fire_per_abv_39():
                 fire_abv_39 += 1
     percentage = round(fire_abv_39 / total_fire * 100)
     file = open('pokemon1.txt', 'w')
-    file.write('Percentage of fire type Pokemons at or above level 40 = ' + str(percentage))
+    file.write('Percentage of fire type Pokemons at or above level 40=' + str(percentage))
     file.close()
 
 
@@ -139,6 +139,19 @@ def type_personalities(pokemon_dict_list):
             values = personalities[key]
             file.write(key + ": " + ", ".join(values)+"\n")
 
+def hp_stage_3(pokemon_dict_list):
+    total_hp_stage_3 = 0
+    total_stage_3 = 0
+    for key, item in enumerate(pokemon_dict_list):
+        if float(item['stage']) == 3.0:
+            total_hp_stage_3 += float(item['hp'])
+            total_stage_3 += 1
+    hp_avg = round(total_hp_stage_3 / total_stage_3)
+    file = open("pokemon5.txt", "w")
+    file.write("Average hit points for Pokemons of stage 3.0="+str(hp_avg))
+    file.close()
+
+
 
 if __name__ == '__main__':
     fire_per_abv_39()
@@ -146,3 +159,4 @@ if __name__ == '__main__':
     new_pokemon_dict_list = missing_atk_def_hp(pokemon_dict_list)
     write_new_csv(new_pokemon_dict_list)
     type_personalities(new_pokemon_dict_list)
+    hp_stage_3(new_pokemon_dict_list)
